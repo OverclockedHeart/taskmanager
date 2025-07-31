@@ -20,10 +20,10 @@ public class User {
     private Long id;
 
     @Column(nullable = false, name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(nullable = false, name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @NotBlank //Check for non-empty email
     @Column(unique = true, nullable = false)

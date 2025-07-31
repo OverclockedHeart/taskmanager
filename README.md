@@ -2,7 +2,7 @@
 
 Versions:
 
-v0.0.1:
+v0.0.2:
 -Created database and his logic
 -Added:
     -entities
@@ -12,5 +12,5 @@ v0.0.1:
     -mapper struct
 
 -Issues:
-    -mapper struct didn't work    
+    -mapper struct didn't work [SOLVED]
 

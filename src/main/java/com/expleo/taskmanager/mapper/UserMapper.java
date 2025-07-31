@@ -1,5 +1,20 @@
 package com.expleo.taskmanager.mapper;
 
-public class UserMapper {
+import org.mapstruct.Mapper;
+
+import com.expleo.taskmanager.dto.CreateUserRequestDTO;
+import com.expleo.taskmanager.dto.UserDTO;
+import com.expleo.taskmanager.model.User;
+
+@Mapper(componentModel = "spring")
+public interface UserMapper {
     
+    //DTO -> Entity
+    User toEntity(UserDTO UserDTO);
+    User createUserToEntity(UserDTO userDTO);
+
+    //Entity -> DTO
+    UserDTO toDto(User user);
+    CreateUserRequestDTO createUserToDTO(User user);
+
 }
