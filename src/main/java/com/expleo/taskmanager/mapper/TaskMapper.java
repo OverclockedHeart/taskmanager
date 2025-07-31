@@ -19,5 +19,5 @@ public interface TaskMapper {
     TaskDTO toDto(Task task);
     CreateTaskRequestDTO CreateTaskToDTO(Task task);
     UpdateTaskStatusRequestDTO UpdateTaskToDTO(Task task);
-
+    
 }
