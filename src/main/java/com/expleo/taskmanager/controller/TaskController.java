@@ -1,0 +1,101 @@
+package com.expleo.taskmanager.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.expleo.taskmanager.dto.CreateTaskRequestDTO;
+import com.expleo.taskmanager.dto.CreateUserRequestDTO;
+import com.expleo.taskmanager.dto.TaskDTO;
+import com.expleo.taskmanager.dto.UserDTO;
+import com.expleo.taskmanager.mapper.TaskMapper;
+import com.expleo.taskmanager.model.Task;
+import com.expleo.taskmanager.model.User;
+import com.expleo.taskmanager.service.TaskService;
+
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@RestController
+@RequestMapping("/api/tasks")
+@RequiredArgsConstructor
+public class TaskController {
+    
+    private final TaskService taskService;
+    private final TaskMapper taskMapper;
+
+    @GetMapping("{id}")
+    public ResponseEntity<TaskDTO> getTask(@PathVariable Long id) {
+        
+        Task task = taskService.getTask(id);
+
+        if (task != null) {
+
+            return ResponseEntity.ok(taskMapper.toDto(task));
+        }
+        
+        return null;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TaskDTO>> getAllTask(){
+
+        List<Task> tasks = taskService.getAllTasks();
+
+        if(!tasks.isEmpty()){
+
+            return ResponseEntity.ok(tasks.stream().map(taskMapper::toDto).collect(Collectors.toList()));
+        }
+        
+        return ResponseEntity.noContent().build();
+    }
+    
+    @PostMapping
+    public CreateTaskRequestDTO createTask(@RequestBody CreateTaskRequestDTO createTask) {
+        
+        Task task = taskMapper.createTaskToEntity(createTask);
+        Task taskSaved = taskService.createTask(task);
+
+        return taskMapper.createTaskToDTO(taskSaved);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable String id, @RequestBody TaskDTO taskDTO) {
+    
+        Task task = taskMapper.toEntity(taskDTO);
+        Task taskUpdate = taskService.updateTask(Long.valueOf(id), task);
+
+        if (taskUpdate != null) {
+            return ResponseEntity.ok(taskMapper.toDto(taskUpdate));
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+/*  This method is not implemented yet
+    
+    @DeleteMapping("{id}")
+    public ResponseEntity<TaskDTO> deleteTask(@PathVariable Long id) {
+        
+        Task task = taskService.deleteTask(id);
+
+        if (task != null) {
+            return ResponseEntity.ok(taskMapper.toDto(task));
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+*/
+
+}

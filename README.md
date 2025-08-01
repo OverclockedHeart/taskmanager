@@ -4,6 +4,15 @@
 
 ---
 
+### v0.0.3
+
+**Added:**
+- Controller
+- Validation
+- Exception
+
+---
+
 ### v0.0.2
 
 **Issues:**

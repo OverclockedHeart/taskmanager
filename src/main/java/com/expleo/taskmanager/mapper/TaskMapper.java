@@ -12,12 +12,12 @@ public interface TaskMapper {
 
     //DTO -> Entity
     Task toEntity(TaskDTO taskDTO);
-    Task CreateTaskToEntity(CreateTaskRequestDTO taskRequestDTO);
-    Task UpdateTaskToEntity(UpdateTaskStatusRequestDTO updateTasDTO);
+    Task createTaskToEntity(CreateTaskRequestDTO taskRequestDTO);
+    Task updateTaskToEntity(UpdateTaskStatusRequestDTO updateTasDTO);
 
     //Enitty -> DTO
     TaskDTO toDto(Task task);
-    CreateTaskRequestDTO CreateTaskToDTO(Task task);
-    UpdateTaskStatusRequestDTO UpdateTaskToDTO(Task task);
-    
+    CreateTaskRequestDTO createTaskToDTO(Task task);
+    UpdateTaskStatusRequestDTO updateTaskToDTO(Task task);
+
 }
