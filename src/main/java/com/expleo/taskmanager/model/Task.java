@@ -3,6 +3,9 @@ package com.expleo.taskmanager.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import com.expleo.taskmanager.enums.TaskPriority;
 import com.expleo.taskmanager.enums.TaskStatus;
 
@@ -27,10 +30,12 @@ public class Task {
     @Column(name = "description")
     private String description;
 
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "status")
     private TaskStatus status;
 
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "priority")
     private TaskPriority priority;
@@ -42,7 +47,7 @@ public class Task {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false, insertable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")

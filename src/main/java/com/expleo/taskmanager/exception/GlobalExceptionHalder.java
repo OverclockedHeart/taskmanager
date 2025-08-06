@@ -33,4 +33,15 @@ public class GlobalExceptionHalder {
     //     return ResponseEntity.badRequest().body(validation);
     // }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<List<ValidationEx>> handleValidationException(MethodArgumentNotValidException exception) {
+        
+        List<ValidationEx> errors = exception.getBindingResult().getFieldErrors().stream()
+            .map(error -> new ValidationEx(error.getField(), error.getDefaultMessage()))
+            .collect(Collectors.toList());
+
+    return ResponseEntity.badRequest().body(errors);
+}
+
+
 }

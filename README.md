@@ -4,6 +4,18 @@
 
 ---
 
+### v0.0.4
+
+**Issues:**
+- enum method not working **[SOLVED]**
+- userId in json return is alway null **[SOLVED]**
+
+**Added:**
+- CreatedAt date
+- UpdatedAt date
+
+---
+
 ### v0.0.3
 
 **Added:**

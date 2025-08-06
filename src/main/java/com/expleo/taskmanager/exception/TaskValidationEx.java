@@ -2,9 +2,10 @@ package com.expleo.taskmanager.exception;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
+
 import java.time.LocalDate;
 
-@Data
+// @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskValidationEx {
@@ -17,10 +18,10 @@ public class TaskValidationEx {
     private String description;
 
     @NotNull
-    private String status; 
+    private String status = "TODO";
 
     @NotNull
-    private String priority;
+    private String priority = "MEDIUM";
 
     @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDate dueDate;

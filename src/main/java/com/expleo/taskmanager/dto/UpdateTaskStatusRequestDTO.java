@@ -11,5 +11,6 @@ import lombok.*;
 public class UpdateTaskStatusRequestDTO {
     
     private TaskStatus status;
-
+    private Long userId;
+    
 }

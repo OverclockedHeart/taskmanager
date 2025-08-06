@@ -21,7 +21,6 @@ public class TaskDTO {
     private TaskPriority priority;
     private LocalDate dueDate;
     private Long userId;
-    private String firstName;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

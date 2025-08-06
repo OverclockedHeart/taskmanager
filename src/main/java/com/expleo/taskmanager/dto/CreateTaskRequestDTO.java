@@ -1,8 +1,10 @@
 package com.expleo.taskmanager.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.expleo.taskmanager.enums.TaskPriority;
+import com.expleo.taskmanager.enums.TaskStatus;
 
 import lombok.*;
 
@@ -17,5 +19,7 @@ public class CreateTaskRequestDTO {
     private TaskPriority priority; 
     private LocalDate dueDate;
     private Long userId;
+    private TaskStatus status;
+    private LocalDateTime createdAt;
 
 }
