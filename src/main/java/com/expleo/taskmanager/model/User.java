@@ -1,6 +1,7 @@
 package com.expleo.taskmanager.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

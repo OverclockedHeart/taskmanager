@@ -8,22 +8,24 @@ import com.expleo.taskmanager.dto.CreateTaskRequestDTO;
 import com.expleo.taskmanager.dto.TaskDTO;
 import com.expleo.taskmanager.dto.UpdateTaskStatusRequestDTO;
 import com.expleo.taskmanager.model.Task;
-import com.expleo.taskmanager.service.UserService;
 
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
 
     //DTO -> Entity
     @Mapping(target = "user.id", source = "userId")
-    Task toEntity(TaskDTO taskDTO, @Context UserService userService);
+    Task toEntity(TaskDTO taskDTO);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "user.id", source = "userId")
-    Task createTaskToEntity(CreateTaskRequestDTO createTaskRequestDTO, @Context UserService userService);
+    Task createTaskToEntity(CreateTaskRequestDTO createTaskRequestDTO);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "user.id", source = "userId")
-    Task updateTaskToEntity(UpdateTaskStatusRequestDTO updateTaskRequestDTO, @Context UserService userService);
+    Task updateTaskToEntity(UpdateTaskStatusRequestDTO updateTaskRequestDTO);
+
+    // Task patchTaskToEntity
+
 
     //Enitty -> DTO
     @Mapping(target = "userId", source = "task.user.id")

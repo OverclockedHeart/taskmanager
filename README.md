@@ -2,6 +2,13 @@
 
 ## Versions:
 
+### v0.0.5
+
+**added:**
+- Docker
+- Docker-compose
+- Init for Sql
+
 ---
 
 ### v0.0.4
