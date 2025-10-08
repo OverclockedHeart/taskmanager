@@ -1,32 +1,17 @@
-package com.expleo.taskmanager.exception;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
+package com.expleo.emailsaver.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 public class GlobalExceptionHalder /* extends ResponseEntityExceptionHandler */ {
 
-    @ExceptionHandler(TaskNotFound.class)
-    public ResponseEntity<String> TaskNotFound(TaskNotFound ex) {
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-    }
-
-    @ExceptionHandler(UserNotFound.class)
-    public ResponseEntity<String> UserNotFound(UserNotFound ex) {
+    @ExceptionHandler(EmailNotFound.class)
+    public ResponseEntity<String> UserNotFound(EmailNotFound ex) {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }

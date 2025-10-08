@@ -7,10 +7,13 @@ RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-FROM openjdk:21-jdk
-WORKDIR /taskmanager
+#---
 
-COPY --from=maven_build /app/target/*.jar taskmanager.jar
+FROM openjdk:21-jdk
+WORKDIR /emailsaver
+
+COPY --from=maven_build /app/target/*.jar emailsaver.jar
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "taskmanager.jar"]
+
+ENTRYPOINT ["java", "-jar", "emailsaver.jar"]

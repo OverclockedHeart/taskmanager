@@ -1,4 +1,4 @@
-package com.expleo.taskmanager.exception;
+package com.expleo.emailsaver.exception;
 
 public class ServerException extends RuntimeException{
 

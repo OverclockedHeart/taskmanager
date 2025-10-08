@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: Email Saver API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8044
+
+paths:
+  /api/emails/{id}:
+    get:
+      summary: Get email by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Email found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDTO'
+        '404':
+          description: Email not found
+        '500':
+          description: Server error
+    
+    delete:
+      summary: Delete email
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Email deleted
+        '404':
+          description: Email not found
+        '500':
+          description: Server error
+
+  /api/emails:
+    post:
+      summary: Create email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEmailRequestDTO'
+      responses:
+        '200':
+          description: Email created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDTO'
+        '500':
+          description: Server error    
+
+components:
+  schemas:
+    EmailDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        email_censored:
+          type: string
+        email_hash:
+          type: string
+
+    CreateEmailRequestDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        email_censored:
+          type: string
+        email_hash:
+          type: string

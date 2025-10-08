@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.expleo</groupId>
-	<artifactId>taskmanager</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
-	<name>taskmanager</name>
-	<description>Task Manager</description>
+	<artifactId>emailsaver</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>emailsaver</name>
+	<description>Email Saver</description>
 	<url/>
 	<licenses>
 		<license/>
